@@ -1,0 +1,45 @@
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">News Forum</a>
+		</div>
+	</nav>
+</header>
+
+<main>
+	<div class="jumbotron text-center">
+	  	<h1 class="display-2">NPR News Scraper</h1>
+	  	<p class="lead">This application uses MongoDB + request + Cheerio to scrape articles from the NPR News website and display them. You can also comment on articles and view other users' comments.</p>
+	  	<hr class="my-4">
+	  	<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+	  	<p class="lead">
+	    	<a class="btn btn-primary btn-lg" href="#" role="button">Scrape Articles</a>
+	  	</p>
+	</div>
+	<div class="row">
+		<div class="col-md-12"><h2 class="text-center">Click on an article to comment on it!</h2></div>
+		<!--Where scraped Articles go-->
+		<div class="col-md-6" id="articles">
+			<h3 class="text-center">Articles</h3>
+			<ul>
+				{{#each articles}}
+					<div class="card">
+  						<div class="card-body">
+    						<h4 class="card-title">{{this.title}}</h4>
+    						<p class="card-text">{{this.summary}}</p>
+    						<div class="text-center">
+    						<a href="{{this.link}}" class="btn btn-primary" target="_blank">Read the full article here</a>
+    						<a class="btn btn-success" data-id="{{this._id}}">Comment on this article</a></div>
+  						</div>
+					</div>
+				{{/each}}
+			</ul>
+		</div>
+		<!--Where comments go-->
+		<div class="col-md-6" id="comments">
+			<h3 class="text-center">Comments</h3>
+		</div>
+	</div>
+</main>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
